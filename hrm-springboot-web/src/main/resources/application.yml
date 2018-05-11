@@ -1,0 +1,71 @@
+server:
+  port: 8080
+
+spring:
+  # 数据源
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/db_hrm?characterEncoding=utf-8&useSSL=true
+      username: root
+      password: mysqlroot
+      driver-class-name: com.mysql.jdbc.Driver
+      # 初始化大小/最小/最大
+      initial-size: 5
+      min-idle: 5
+      max-active: 5
+      # 连接等待超时时间
+      max-wait: 60000
+      # 检测间隔
+      time-between-eviction-runs-millis: 60000
+      # 连接最小生存时间
+      min-evictable-idle-time-millis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      # 打开PSCache
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      # 监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: stat
+
+  thymeleaf:
+    # 关闭默认模板引擎
+    cache: false
+    enabled: false
+
+  mvc:
+    # 视图解析器
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+  http:
+    # 编码
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+
+  servlet:
+    # 文件上传
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+
+
+
+
+
+
+#mybatis:
+#  mapper-locations: classpath:mapping/*.xml
+#  type-aliases-package: com.winter.model
+
+#pagehelper分页插件
+#pagehelper:
+#    helperDialect: mysql
+#    reasonable: true
+#    supportMethodsArguments: true
+#    params: count=countSql
